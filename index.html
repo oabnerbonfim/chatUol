@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Uol</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="barraSuperior">
+      <img src="logo.svg" alt="Logo do Chat UOL" />
+      <button id="botaoPublico" onclick="abrirMenu()">
+        <ion-icon name="people-sharp"></ion-icon>
+      </button>
+    </header>
+
+    <main class="chat">
+      <ul class="mensagem"></ul>
+    </main>
+
+    <footer class="barraInferior">
+      <div class="entradaMensagem">
+        <input class="mensagem" type="text" placeholder="Escreva aqui..." />
+        <div class="publico destinatario-selecionado">Enviando para Todos (público)</div>
+      </div>
+      <button id="botaoEnviar">
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </button>
+    </footer>
+  </div>
+
+  <div class="fundoMenu escondido" onclick="abrirMenu()"></div>
+
+  <aside class="menu escondido">
+    <h3 class="tituloMenu">Escolha um contato para enviar mensagem:</h3>
+    <ul class="contatos">
+      <li onclick="selecionarContato(this)">
+        <ion-icon name="people-sharp"></ion-icon> Todos
+      </li>
+    </ul>
+    <h3 class="tituloMenu">Escolha a visibilidade:</h3>
+    <ul class="visibilidades">
+      <li class="visibilidade-publico selecionado" onclick="trocarVisibilidade('publico')">
+        <ion-icon name="lock-open"></ion-icon> Público 
+        <ion-icon class="check" name="checkmark-outline"></ion-icon>
+      </li>
+      <li class="visibilidade-reservado" onclick="trocarVisibilidade('reservado')">
+        <ion-icon name="lock-closed"></ion-icon> Reservadamente 
+        <ion-icon class="check" name="checkmark-outline"></ion-icon>
+      </li>
+    </ul>
+  </aside>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

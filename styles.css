@@ -1,0 +1,150 @@
+body {
+  font-family: "Roboto", serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.barraSuperior {
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0px -4px 6px 0px #0000000d;
+  color: #FFFFFF;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.barraSuperior img{
+  width: 75px;
+  height: 53px;
+}
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.check {
+  display: inline-block;
+  color: transparent;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.check.selecionado {
+  color:#28BB25;
+}
+
+.visibilidade-publico,
+.visibilidade-reservado {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.visibilidade-publico .check,
+.visibilidade-reservado .check {
+  margin-left: 5px;
+}
+
+.mensagem {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mensagem .reservada {
+  background-color: #FFDEDE;
+}
+.mensagem li {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.barraInferior {
+  height: 80px;
+  display: flex;
+  padding: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0px -4px 6px 0px #0000000d;
+  align-items: center;
+}
+.publico{
+  font-size: 14px;
+}
+.entradaMensagem {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.entradaMensagem input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 26px;
+}
+#botaoPublico{
+  font-size: 45px;
+}
+
+.fundoMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000099;
+  z-index: 10;
+}
+
+.menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background-color:#FFFFFF;
+  z-index: 20;
+  padding-left: 20px;
+  align-items: center;
+}
+
+.tituloMenu{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18.75px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 30px;
+}
+
+.escondido {
+  display: none;
+}
+
+.hora {
+  font-size: 0.8em;
+  color: #888;
+  margin-left: 10px;
+}
