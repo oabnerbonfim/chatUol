@@ -10,7 +10,7 @@ function abrirMenu() {
 }
 
 function salvarNome() {
-  nome = prompt("Digite seu nome:");
+  nome = prompt("Digite seu lindo nome:");
 
   if (nome === "" || nome === null) {
     salvarNome();
@@ -49,12 +49,12 @@ function manterConexao() {
 }
 
 function carregarMensagens() {
-  axios.get("https://mock-api.driven.com.br/api/v6/uol/messages/3ad669c7-4663-4d85-a022-2f1317193b0e").then(function (response) {
+  axios.get("https://mock-api.driven.com.br/api/v6/uol/messages/3ad669c7-4663-4d85-a022-2f1317193b0e").then(function (resposta) {
     const listaMensagens = document.querySelector(".chat .mensagem");
     listaMensagens.innerHTML = "";
 
-    for (var i = 0; i < response.data.length; i++) {
-      var msg = response.data[i];
+    for (var i = 0; i < resposta.data.length; i++) {
+      var msg = resposta.data[i];
       var classeMensagem = "";
 
       if (msg.type === "private_message") {
@@ -85,7 +85,7 @@ function carregarMensagens() {
 }
 
 function carregarUsuarios() {
-  axios.get("https://mock-api.driven.com.br/api/v6/uol/participants/3ad669c7-4663-4d85-a022-2f1317193b0e").then(function (response) {
+  axios.get("https://mock-api.driven.com.br/api/v6/uol/participants/3ad669c7-4663-4d85-a022-2f1317193b0e").then(function (resposta) {
     const listaUsuarios = document.querySelector(".menu .contatos");
 
     listaUsuarios.innerHTML = `
@@ -98,8 +98,8 @@ function carregarUsuarios() {
       </li>
     `;
 
-    for (var i = 0; i < response.data.length; i++) {
-      var user = response.data[i];
+    for (var i = 0; i < resposta.data.length; i++) {
+      var user = resposta.data[i];
       var checkClass = "";
 
       if (destinatario === user.name) {
@@ -119,6 +119,12 @@ function carregarUsuarios() {
       `;
     }
   });
+}
+
+function selecionarContato(elemento, contato) {
+  destinatario = contato;
+  carregarUsuarios();
+  atualizarDestinatario();
 }
 
 function enviarMensagem() {
@@ -161,19 +167,8 @@ function atualizarVisibilidade() {
   let visibilidadePublico = document.querySelector(".visibilidade-publico .check");
   let visibilidadeReservado = document.querySelector(".visibilidade-reservado .check");
 
-  if (visibilidade === "message") {
-    visibilidadePublico.classList.add("selecionado");
-    visibilidadeReservado.classList.remove("selecionado");
-  } else {
-    visibilidadePublico.classList.remove("selecionado");
-    visibilidadeReservado.classList.add("selecionado");
-  }
-}
-
-function selecionarContato(elemento, contato) {
-  destinatario = contato;
-  carregarUsuarios();
-  atualizarDestinatario();
+  visibilidadePublico.classList.toggle("selecionado", visibilidade === "message");
+  visibilidadeReservado.classList.toggle("selecionado", visibilidade === "private_message");
 }
 
 function atualizarDestinatario() {
